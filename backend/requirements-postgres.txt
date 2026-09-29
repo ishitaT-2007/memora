@@ -1,0 +1,2 @@
+# Optional. Accrue defaults to SQLite. Install only if DATABASE_URL is PostgreSQL.
+psycopg[binary]>=3.2.10,<4

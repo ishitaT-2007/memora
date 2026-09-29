@@ -1,0 +1,26 @@
+COPY THIS WHOLE FOLDER
+======================
+
+Folder: docs\demo\
+
+Copy the entire "demo" folder (all files inside) to a USB drive or to your
+other PC, then place it under your Accrue git repo as:
+
+  <your-repo>\docs\demo\
+
+What you get:
+  DEMO_SHEET.html          - image document (layout + static Ask queries)
+  DEMO_VIDEO.html          - autoplay 60s demo walkthrough (open in browser)
+  accrue-demo-layout.png   - annotated layout image
+  README.md                - short index
+
+How to open on any PC (offline, no install):
+  1. Double-click DEMO_SHEET.html
+  2. Double-click DEMO_VIDEO.html
+
+Do NOT need to commit from the development PC. Add/commit on the system
+where your git remote lives, when you are ready.
+
+Live app login (separate from this pack):
+  http://127.0.0.1:5173
+  csm@accrue.demo / AccrueDemo!2026
