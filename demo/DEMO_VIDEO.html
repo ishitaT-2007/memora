@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Accrue — 60s demo video walkthrough</title>
+  <style>
+    :root {
+      --paper: #f3eee4;
+      --card: #fffdf8;
+      --ink: #1c1916;
+      --muted: #6b645b;
+      --line: #ded6c8;
+      --accent: #9f2b1c;
+      --forest: #215c45;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+    }
+    header, footer {
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    h1 { font-family: Georgia, serif; font-size: 24px; margin: 0; }
+    .stage {
+      margin: 0 24px 12px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 28px 32px;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .kicker {
+      font-family: Consolas, monospace;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 10px;
+    }
+    .slide-title {
+      font-family: Georgia, serif;
+      font-size: clamp(28px, 4vw, 42px);
+      margin: 0 0 14px;
+      letter-spacing: -0.03em;
+    }
+    .body { font-size: 18px; color: var(--muted); max-width: 62ch; margin: 0 0 18px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 14px;
+    }
+    .chip.hi { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .progress {
+      height: 4px;
+      background: var(--line);
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 0 24px 16px;
+    }
+    .bar { height: 100%; width: 0%; background: var(--accent); transition: width 0.2s linear; }
+    button {
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-weight: 650;
+      cursor: pointer;
+      background: var(--ink);
+      color: #fff;
+    }
+    button.ghost { background: #fff; color: var(--ink); border: 1px solid var(--line); }
+    .meta { color: var(--muted); font-size: 13px; }
+    a { color: var(--forest); }
+    .shot {
+      margin-top: 18px;
+      border: 1px dashed var(--line);
+      border-radius: 14px;
+      padding: 14px 16px;
+      background: #fffaf2;
+      font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Accrue · demo video</h1>
+    <div class="meta">Autoplay walkthrough · pause anytime · same steps as a live 60s demo</div>
+  </header>
+
+  <div class="progress"><div class="bar" id="bar"></div></div>
+
+  <section class="stage" id="stage" aria-live="polite">
+    <p class="kicker" id="kicker">Step 1 / 8</p>
+    <h2 class="slide-title" id="title">Loading…</h2>
+    <p class="body" id="body"></p>
+    <div class="chips" id="chips"></div>
+    <div class="shot" id="shot"></div>
+  </section>
+
+  <footer>
+    <div>
+      <button type="button" id="prev" class="ghost">Previous</button>
+      <button type="button" id="play">Pause</button>
+      <button type="button" id="next" class="ghost">Next</button>
+    </div>
+    <div class="meta">
+      App: <a href="http://127.0.0.1:5173" target="_blank" rel="noreferrer">http://127.0.0.1:5173</a>
+      · <a href="DEMO_SHEET.html">Layout image sheet</a>
+      · Login <code>csm@accrue.demo</code> / <code>AccrueDemo!2026</code>
+    </div>
+  </footer>
+
+  <script>
+    const slides = [
+      {
+        kicker: "Step 1 / 8 · Login",
+        title: "Sign in as the demo CSM",
+        body: "Open Accrue and use the synthetic CSM account. No real customers are in this corpus.",
+        chips: ["csm@accrue.demo", "AccrueDemo!2026"],
+        shot: "You should land on Acme Cloud with the Client book already loaded on the left.",
+      },
+      {
+        kicker: "Step 2 / 8 · Client details (left)",
+        title: "Show the Client book",
+        body: "Point to the left panel: people, commitments, and prior incidents come from Accrue memory — not from inventing facts in Priya’s email.",
+        chips: ["Priya Shah · VP Engineering", "$180,000 ARR", "15-min P1 updates"],
+        shot: "Say: “This is the account memory the CSM already has before they type a reply.”",
+      },
+      {
+        kicker: "Step 3 / 8 · Trigger",
+        title: "Click Run 60s demo",
+        body: "One click pastes Priya’s third-outage email and runs analysis. Keep both API (8000) and UI (5173) windows open.",
+        chips: ["Run 60s demo"],
+        shot: "Email subject idea: “This is the third outage this quarter. We are done.”",
+      },
+      {
+        kicker: "Step 4 / 8 · Right column",
+        title: "Read the rescue brief",
+        body: "On the right: 20-second brief, Do / Don’t with evidence IDs, comparable save vs churn, and an unsent editable draft.",
+        chips: ["Brief", "Do / Don’t", "Draft (does not send)"],
+        shot: "Highlight: do not offer credits; honor the 15-minute update commitment; Northstar save vs Helix churn.",
+      },
+      {
+        kicker: "Step 5 / 8 · Static Ask query",
+        title: "Ask: What did we promise Priya?",
+        body: "In the middle Ask window, click the static chip — do not type a new question. Accrue answers only from approved memory.",
+        chips: ["What did we promise Priya?"],
+        shot: "Expected theme: dedicated P1 updates within 15 minutes + named engineering owner.",
+      },
+      {
+        kicker: "Step 6 / 8 · Static Ask query",
+        title: "Ask: Should we offer credits?",
+        body: "Click the next static chip. This is the landmine check for judges.",
+        chips: ["Should we offer credits?"],
+        shot: "Expected: No — Priya rejected credits; Helix churned after credit-led saves.",
+      },
+      {
+        kicker: "Step 7 / 8 · Mail vs memory",
+        title: "Ask: What is Priya telling in this mail?",
+        body: "This chip answers from the live pasted email (checkout API down, third outage, wants an owner).",
+        chips: ["What is Priya telling in this mail?"],
+        shot: "Contrast with memory questions: mail = trigger, Client book = history.",
+      },
+      {
+        kicker: "Step 8 / 8 · Close",
+        title: "Optional chips + close the loop",
+        body: "Any of these remaining static queries are safe for Q&A. Then show Copy draft — Accrue never sends.",
+        chips: [
+          "Who are the stakeholders?",
+          "What is this account's ARR?",
+          "What happened with SSO?",
+          "What prior incidents does this account have?",
+        ],
+        shot: "Full annotated image: open DEMO_SHEET.html in this folder.",
+      },
+    ];
+
+    let i = 0;
+    let playing = true;
+    const DURATION = 5500;
+    let started = performance.now();
+    let raf = 0;
+
+    const els = {
+      kicker: document.getElementById("kicker"),
+      title: document.getElementById("title"),
+      body: document.getElementById("body"),
+      chips: document.getElementById("chips"),
+      shot: document.getElementById("shot"),
+      bar: document.getElementById("bar"),
+      play: document.getElementById("play"),
+    };
+
+    function render() {
+      const s = slides[i];
+      els.kicker.textContent = s.kicker;
+      els.title.textContent = s.title;
+      els.body.textContent = s.body;
+      els.shot.textContent = s.shot;
+      els.chips.innerHTML = "";
+      s.chips.forEach((label, idx) => {
+        const span = document.createElement("span");
+        span.className = "chip" + (idx === 0 ? " hi" : "");
+        span.textContent = label;
+        els.chips.appendChild(span);
+      });
+      started = performance.now();
+    }
+
+    function tick(now) {
+      if (playing) {
+        const p = Math.min(1, (now - started) / DURATION);
+        els.bar.style.width = `${((i + p) / slides.length) * 100}%`;
+        if (p >= 1) {
+          i = (i + 1) % slides.length;
+          render();
+        }
+      }
+      raf = requestAnimationFrame(tick);
+    }
+
+    document.getElementById("prev").onclick = () => {
+      i = (i - 1 + slides.length) % slides.length;
+      render();
+    };
+    document.getElementById("next").onclick = () => {
+      i = (i + 1) % slides.length;
+      render();
+    };
+    els.play.onclick = () => {
+      playing = !playing;
+      els.play.textContent = playing ? "Pause" : "Play";
+      if (playing) started = performance.now();
+    };
+
+    render();
+    raf = requestAnimationFrame(tick);
+  </script>
+</body>
+</html>
