@@ -1,0 +1,102 @@
+{
+  "accrue-acc_acme": [
+    {
+      "id": "mem_acme_profile",
+      "account_id": "acc_acme",
+      "text": "Acme Cloud is an enterprise customer at $180,000 ARR. Renewal is sensitive after 2026 reliability issues. Product usage is checkout API and webhooks.",
+      "memory_type": "account_profile",
+      "source_ref": "src_acme_mar_threat",
+      "scope": "account",
+      "timestamp": ""
+    },
+    {
+      "id": "mem_acme_priya",
+      "account_id": "acc_acme",
+      "text": "Priya Shah, VP Engineering, is economic and technical buyer. Direct, evidence-first. Explicitly asked not to be offered credits after reliability failures.",
+      "memory_type": "stakeholder",
+      "source_ref": "src_acme_mar_threat",
+      "scope": "account",
+      "timestamp": ""
+    },
+    {
+      "id": "mem_acme_landmine_credits",
+      "account_id": "acc_acme",
+      "text": "Do not offer credits or discounts to Priya Shah in response to reliability incidents. She stated this on 12 Mar 2026.",
+      "memory_type": "landmine",
+      "source_ref": "src_acme_mar_threat",
+      "scope": "account",
+      "timestamp": ""
+    },
+    {
+      "id": "mem_acme_landmine_sso",
+      "account_id": "acc_acme",
+      "text": "Do not mention SSO unless Priya raises it. Q2 SAML SSO slipped to Q3; she was informed 2 Jun 2026 and it is a landmine in incident comms.",
+      "memory_type": "landmine",
+      "source_ref": "src_acme_sso",
+      "scope": "account",
+      "timestamp": ""
+    },
+    {
+      "id": "mem_acme_commitment_updates",
+      "account_id": "acc_acme",
+      "text": "Standing commitment: dedicated P1 updates to Priya and Marcus within 15 minutes and a named engineering owner on the war-room thread (promised 18 Mar 2026).",
+      "memory_type": "commitment",
+      "source_ref": "src_acme_updates_promise",
+      "scope": "account",
+      "timestamp": ""
+    },
+    {
+      "id": "mem_acme_incidents",
+      "account_id": "acc_acme",
+      "text": "Two P1s already this quarter: 11 Jul checkout API 5xx (41 min) and 19 Aug webhook timeouts (28 min). A third outage this quarter would match Priya's March 'we are done' threshold language.",
+      "memory_type": "incident_history",
+      "source_ref": "src_acme_outage_aug",
+      "scope": "account",
+      "timestamp": ""
+    }
+  ],
+  "accrue-acc_northstar": [
+    {
+      "id": "mem_play_northstar",
+      "account_id": "acc_northstar",
+      "text": "Comparable SAVE: Northstar Analytics \u2014 founder note within 2 hours + 48-hour dedicated war room with named eng owner after repeated API downtime. Discount was not the lever.",
+      "memory_type": "outcome_playbook",
+      "source_ref": "src_northstar_save",
+      "scope": "comparable",
+      "timestamp": ""
+    }
+  ],
+  "accrue-acc_helix": [
+    {
+      "id": "mem_play_helix",
+      "account_id": "acc_helix",
+      "text": "Comparable CHURN: Helix Commerce \u2014 20% credit and a free month after a third reliability incident, without fixing root cause. Customer said credits are not uptime.",
+      "memory_type": "outcome_playbook",
+      "source_ref": "src_helix_churn",
+      "scope": "comparable",
+      "timestamp": ""
+    }
+  ],
+  "accrue-acc_brightpath": [
+    {
+      "id": "mem_play_brightpath",
+      "account_id": "acc_brightpath",
+      "text": "Comparable SAVE: Brightpath Health \u2014 engineering-first response, twice-daily written updates, no credits. CISO buyer treated money-as-apology as incompetence.",
+      "memory_type": "outcome_playbook",
+      "source_ref": "src_brightpath_save",
+      "scope": "comparable",
+      "timestamp": ""
+    }
+  ],
+  "accrue-acc_orbit": [
+    {
+      "id": "mem_play_orbit",
+      "account_id": "acc_orbit",
+      "text": "Comparable CHURN: Orbit Logistics \u2014 repeated credits trained the customer that outages were expected.",
+      "memory_type": "outcome_playbook",
+      "source_ref": "src_orbit_churn",
+      "scope": "comparable",
+      "timestamp": ""
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: accrue
+      POSTGRES_PASSWORD: accrue
+      POSTGRES_DB: accrue
+    ports:
+      - "5432:5432"
+    volumes:
+      - accrue_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U accrue"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: ./backend
+    environment:
+      APP_ENV: staging
+      APP_SECRET_KEY: ${APP_SECRET_KEY:-change-me-in-staging}
+      DATABASE_URL: postgresql+psycopg://accrue:accrue@db:5432/accrue
+      HINDSIGHT_MODE: ${HINDSIGHT_MODE:-mock}
+      HINDSIGHT_BASE_URL: ${HINDSIGHT_BASE_URL:-http://localhost:8888}
+      HINDSIGHT_API_KEY: ${HINDSIGHT_API_KEY:-}
+      LLM_MODE: ${LLM_MODE:-mock}
+      GROQ_API_KEY: ${GROQ_API_KEY:-}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      APP_CORS_ORIGINS: http://localhost:8080,http://127.0.0.1:8080
+      DEMO_CSM_PASSWORD: ${DEMO_CSM_PASSWORD:-AccrueDemo!2026}
+      DEMO_ADMIN_PASSWORD: ${DEMO_ADMIN_PASSWORD:-AccrueAdmin!2026}
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  web:
+    build:
+      context: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
+
+volumes:
+  accrue_pg:
